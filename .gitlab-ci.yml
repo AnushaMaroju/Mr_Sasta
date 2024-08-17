@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+deploy-job:
+  stage: deploy
+
+  before_script:
+    - mkdir ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+  script:
+    - echo "welcome to mr.sasta" >> server.js
+    - scp -o StrictHostKeyChecking=no server.js $AWS_USERNAME@AWS_PUBLIC_IP /home/ec2-user/mr.sasta/server.js 
