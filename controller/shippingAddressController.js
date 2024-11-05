@@ -20,8 +20,7 @@ const addAddress = async (req, res) => {
     // Check if an active address already exists for the user
     const existingAddress = await AddressModel.findOne({
       userId: userId,
-      city: city,
-      state: state,
+      typeOfAddress:typeOfAddress,
       activeStatus: "active",
     });
 
