@@ -11,7 +11,23 @@ const AddressSchema = new mongoose.Schema(
       enum: ["Home", "Office", "Others"],
       default: "Home",
     },
-    
+    location: {
+      coordinates: {
+        type: [Number], // [longitude, latitude]
+        required: true,
+      },
+      type: {
+        type: String,
+        enum: ["Point"], // GeoJSON type
+        required: true,
+      },
+    },
+    floor: {
+      type: String, // Specify type if needed
+    },
+    area: {
+      type: String, // Specify type if needed
+    },
     streetName: {
       type: String,
     },
@@ -23,13 +39,6 @@ const AddressSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    pinCode: {
-      type: String,
-      required: true,
-    },
-    country: {
-      type: String
-        },
     landMark: {
       type: String,
     },
@@ -39,7 +48,6 @@ const AddressSchema = new mongoose.Schema(
     phoneNumber: {
       type: String,
     },
-    email:{    type: String,},
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
