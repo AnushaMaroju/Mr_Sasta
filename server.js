@@ -14,6 +14,12 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+
+require('dotenv').config();
+
+const dbUrl = process.env.DB_URL;
+
+
 const UserRoutes = require("./routers/userRouter");
 const SellerRoute = require("./routers/sellerRoute");
 const BranchRoute = require("./routers/branchRoute");
